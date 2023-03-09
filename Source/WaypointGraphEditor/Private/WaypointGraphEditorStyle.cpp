@@ -40,7 +40,7 @@ const FVector2D Icon20x20(20.0f, 20.0f);
 
 TSharedRef< FSlateStyleSet > FWaypointGraphEditorStyle::Create()
 {
-	TSharedRef< FSlateStyleSet > Style = MakeShareable(new FSlateStyleSet("WaypointGraphStyle"));
+	TSharedRef< FSlateStyleSet > Style = MakeShareable(new FSlateStyleSet("WaypointGraphEditorStyle"));
 	Style->SetContentRoot(IPluginManager::Get().FindPlugin("WaypointGraphEditor")->GetBaseDir() / TEXT("Resources"));
 
 	Style->Set("WaypointGraphEditor.PluginAction", new IMAGE_BRUSH_SVG(TEXT("PlaceholderButtonIcon"), Icon20x20));

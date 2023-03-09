@@ -7,6 +7,7 @@
 #include "GameFramework/Actor.h"
 #include "WaypointGraph.generated.h"
 
+class UWaypointConnection;
 /**
  * 
  */
@@ -27,5 +28,5 @@ public:
 	void OtherTestMethod();
 	
 	UPROPERTY()
-	UWaypointConnection* CreatedConnection;
+	TArray<UWaypointConnection*> Connections;
 };

@@ -6,7 +6,7 @@
 
 void FWaypointGraphEditorCommands::RegisterCommands()
 {
-	UI_COMMAND(PluginAction, "WaypointGraph", "Execute WaypointGraph action", EUserInterfaceActionType::Button, FInputChord());
+	UI_COMMAND(PluginAction, "WaypointGraphEditor", "Execute WaypointGraph action", EUserInterfaceActionType::Button, FInputChord());
 }
 
 #undef LOCTEXT_NAMESPACE

@@ -3,6 +3,7 @@
 
 #include "WaypointGraph.h"
 
+#include "NavigationSystem.h"
 #include "WaypointConnection.h"
 
 void AWaypointGraph::SpawnWaypoints()
@@ -14,18 +15,30 @@ void AWaypointGraph::SpawnWaypoints()
 	AWaypoint* SecondWaypoint = GetWorld()->SpawnActor<AWaypoint>(AWaypoint::StaticClass(), FVector(0, 0,0), FRotator(0, 0, 0), SpawnParameters);
 	
 	UWaypointConnection* WaypointConnection = NewObject<UWaypointConnection>(this);
-	CreatedConnection = WaypointConnection;
+	Connections.Add(WaypointConnection);
 	WaypointConnection->CreateConnection(FirstWaypoint, SecondWaypoint);
 
-	WaypointConnection->AddToPath();
+	AWaypoint* ThirdWaypoint = GetWorld()->SpawnActor<AWaypoint>(AWaypoint::StaticClass(), FVector(100, 0,0), FRotator(0, 0, 0), SpawnParameters);
+	AWaypoint* FourthWaypoint = GetWorld()->SpawnActor<AWaypoint>(AWaypoint::StaticClass(), FVector(0, 0,0), FRotator(0, 0, 0), SpawnParameters);
+
+	UWaypointConnection* WaypointConnectionTwo = NewObject<UWaypointConnection>(this);
+	WaypointConnectionTwo->CreateConnection(ThirdWaypoint, FourthWaypoint);
+	Connections.Add(WaypointConnectionTwo);
+
+	UWaypointConnection* WaypointConnectionThree = NewObject<UWaypointConnection>(this);
+	WaypointConnectionThree->CreateConnection(FirstWaypoint, FourthWaypoint);
+	Connections.Add(WaypointConnectionThree);
 }
 
 void AWaypointGraph::TestMethod()
 {
-	CreatedConnection->RemoveFromPath();
+	
 }
 
 void AWaypointGraph::OtherTestMethod()
 {
-	CreatedConnection->AddToPath();
+	for (auto Connection : Connections)
+	{
+		Connection->AddToPath();
+	}
 }

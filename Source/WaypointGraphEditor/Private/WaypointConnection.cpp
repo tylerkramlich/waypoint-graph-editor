@@ -52,7 +52,7 @@ void UWaypointConnection::Tick(float DeltaTime)
 
 bool UWaypointConnection::IsTickable() const
 {
-	return FTickableGameObject::IsTickable();
+	return true;
 }
 
 TStatId UWaypointConnection::GetStatId() const
@@ -62,10 +62,16 @@ TStatId UWaypointConnection::GetStatId() const
 
 bool UWaypointConnection::IsTickableWhenPaused() const
 {
-	return FTickableGameObject::IsTickableWhenPaused();
+	return true;
 }
 
 ETickableTickType UWaypointConnection::GetTickableTickType() const
 {
 	return FTickableGameObject::GetTickableTickType();
 }
+
+bool UWaypointConnection::IsTickableInEditor() const
+{
+	return true;
+}
+

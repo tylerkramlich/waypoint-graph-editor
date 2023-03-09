@@ -11,14 +11,15 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType)
 class WAYPOINTGRAPHEDITOR_API UWaypointConnection : public UObject, public FTickableGameObject
 {
 	GENERATED_BODY()
 
 public:
 	UWaypointConnection();
-	
+
+	UFUNCTION(BlueprintCallable)
 	void CreateConnection(AWaypoint* StartWaypoint, AWaypoint* EndWaypoint);
 
 	void AddToPath();
@@ -36,6 +37,7 @@ public:
 	virtual TStatId GetStatId() const override;
 	virtual bool IsTickableWhenPaused() const override;
 	virtual ETickableTickType GetTickableTickType() const override;
+	virtual bool IsTickableInEditor() const override;
 	
 private:
 	UPROPERTY(EditAnywhere, Category="Connection")
