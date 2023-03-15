@@ -39,7 +39,6 @@ public:
 	virtual ETickableTickType GetTickableTickType() const override;
 	virtual bool IsTickableInEditor() const override;
 	
-private:
 	UPROPERTY(EditAnywhere, Category="Connection")
 	AWaypoint* StartWaypoint;
 

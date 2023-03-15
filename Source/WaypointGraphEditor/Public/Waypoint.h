@@ -16,11 +16,8 @@ public:
 	// Sets default values for this actor's properties
 	AWaypoint();
 
-	FVector GetPosition() const { return Position; }
-	void SetPosition(const FVector& NewPosition) { Position = NewPosition; }
-
-	UPROPERTY()
-	UWaypointVisualComponent* VisualComponent;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<AWaypoint*> Neighbors;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -29,8 +26,4 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-private:
-	UPROPERTY(EditAnywhere, Category = "Waypoint")
-	FVector Position;
 };

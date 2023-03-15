@@ -7,10 +7,10 @@
 
 UWaypointConnection::UWaypointConnection()
 {
-#if WITH_EDITOR
-	WaypointConnectionVisualComponent = CreateDefaultSubobject<UWaypointConnectionVisualComponent>("WaypointConnectionVisual");
-	WaypointConnectionVisualComponent->RegisterComponent();
-#endif
+// #if WITH_EDITOR
+// 	WaypointConnectionVisualComponent = CreateDefaultSubobject<UWaypointConnectionVisualComponent>("WaypointConnectionVisual");
+// 	WaypointConnectionVisualComponent->RegisterComponent();
+// #endif
 }
 
 void UWaypointConnection::CreateConnection(AWaypoint* FirstWaypoint, AWaypoint* SecondWaypoint)
@@ -18,8 +18,9 @@ void UWaypointConnection::CreateConnection(AWaypoint* FirstWaypoint, AWaypoint* 
 	StartWaypoint = FirstWaypoint;
 	EndWaypoint = SecondWaypoint;
 	
-	WaypointConnectionVisualComponent->WaypointConnectionVisualizer.Start = StartWaypoint->GetTransform().GetLocation();
-	WaypointConnectionVisualComponent->WaypointConnectionVisualizer.End = EndWaypoint->GetTransform().GetLocation();
+	// WaypointConnectionVisualComponent->WaypointConnectionVisualizer.Start = StartWaypoint->GetTransform().GetLocation();
+	// WaypointConnectionVisualComponent->WaypointConnectionVisualizer.End = EndWaypoint->GetTransform().GetLocation();
+	// WaypointConnectionVisualComponent->MarkRenderStateDirty();
 }
 
 void UWaypointConnection::AddToPath()
@@ -34,20 +35,19 @@ void UWaypointConnection::RemoveFromPath()
 
 void UWaypointConnection::Tick(float DeltaTime)
 {
-	if (StartWaypoint && EndWaypoint)
-	{
-		if (bIsInPath)
-		{
-			WaypointConnectionVisualComponent->WaypointConnectionVisualizer.Color = FColor::Green;
-		} else
-		{
-			WaypointConnectionVisualComponent->WaypointConnectionVisualizer.Color = FColor::White;
-		}
-		
-		WaypointConnectionVisualComponent->WaypointConnectionVisualizer.Start = StartWaypoint->GetTransform().GetLocation();
-		WaypointConnectionVisualComponent->WaypointConnectionVisualizer.End = EndWaypoint->GetTransform().GetLocation();
-		WaypointConnectionVisualComponent->MarkRenderStateDirty();
-	}
+	// if (StartWaypoint && EndWaypoint)
+	// {
+	// 	if (bIsInPath)
+	// 	{
+	// 		WaypointConnectionVisualComponent->WaypointConnectionVisualizer.Color = FColor::Green;
+	// 	} else
+	// 	{
+	// 		WaypointConnectionVisualComponent->WaypointConnectionVisualizer.Color = FColor::White;
+	// 	}
+	// 	
+	// 	WaypointConnectionVisualComponent->WaypointConnectionVisualizer.Start = StartWaypoint->GetTransform().GetLocation();
+	// 	WaypointConnectionVisualComponent->WaypointConnectionVisualizer.End = EndWaypoint->GetTransform().GetLocation();
+	// }
 }
 
 bool UWaypointConnection::IsTickable() const
